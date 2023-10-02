@@ -1,0 +1,19 @@
+pipeline{
+agent any
+options{
+buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+timestamps()
+}
+stages {
+stage('First step') {
+steps {
+powershell "ping google.com"
+}
+}
+stage('Second step') {
+steps {
+powershell "ping vk.com"
+}
+}
+}
+}
